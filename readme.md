@@ -15,11 +15,11 @@ This container is designed to support any game that uses HTTP and also supports 
  - Uplay (Ubisoft)
  - Windows Updates
 
-You can use this container for Steam, however our [steamcache container](https://hub.docker.com/r/steamcache/steamcache/) is a better option as it uses a different caching method that's better for Steam.
+You can use this container for Steam, however [steamcache container](https://hub.docker.com/r/steamcache/steamcache/) is a better option as it uses a different caching method that's better for Steam.
 
 ## Usage
 
-You will need to have a DNS server forwarding queries to the machine your docker container is running on. You can use the [steamcache-dns](https://hub.docker.com/r/steamcache/steamcache-dns/) docker image to do this or you can use a DNS service already on your network see the [steamcache-dns github page](https://github.com/steamcache/steamcache-dns) for more information.
+You will need to have a DNS server forwarding queries to the machine your docker container is running on. You can use the [steamcache-dns](https://hub.docker.com/r/pips/steamcache-dns/) docker image to do this or you can use a DNS service already on your network see the [steamcache-dns github page](https://github.com/steamcache/steamcache-dns) for more information.
 
 Run the origin container using the following to allow TCP port 80 (HTTP) through the host machine:
 
@@ -40,10 +40,6 @@ For an game cache to function on your network you need two services.
 The cache service transparently proxies your requests for content to the content procider, or serves the content to you if it already has it.
 
 The special DNS service handles DNS queries normally (recursively), except when they're about the games you're interested in and in that case it responds that the depot cache service should be used.
-
-## Suggested Hardware
-
-Regular commodity hardware (a single 2TB WD Black on an HP Microserver) can achieve peak throughputs of 30MB/s+ using this setup (depending on the specific content being served).
 
 ## Monitoring
 
